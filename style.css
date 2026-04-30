@@ -1,0 +1,86 @@
+/* Small extras on top of Tailwind. Keep this short. */
+
+/* Hide the page until JS swaps it in, so we don't flash unstyled content */
+html { color-scheme: light dark; }
+
+/* Soft fade-in when a page changes */
+.page-enter {
+  animation: fade .25s ease;
+}
+@keyframes fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Form fields share one look */
+.field {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgb(203 213 225);   /* slate-300 */
+  border-radius: 0.5rem;
+  background-color: white;
+  color: inherit;
+}
+.dark .field {
+  border-color: rgb(71 85 105);          /* slate-600 */
+  background-color: rgb(30 41 59);       /* slate-800 */
+}
+.field:focus {
+  outline: none;
+  border-color: #1E40AF;
+  box-shadow: 0 0 0 3px rgba(30,64,175,.15);
+}
+
+/* Reusable button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.15s, transform 0.05s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: #1E40AF; color: white; }
+.btn-primary:hover { background: #1D4ED8; }
+.btn-ghost { background: transparent; color: inherit; }
+.btn-ghost:hover { background: rgba(0,0,0,.05); }
+.dark .btn-ghost:hover { background: rgba(255,255,255,.05); }
+.btn-danger { background: #dc2626; color: white; }
+.btn-danger:hover { background: #b91c1c; }
+
+/* Tables look the same on every page */
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th, .tbl td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgb(226 232 240);
+}
+.dark .tbl th, .dark .tbl td { border-color: rgb(51 65 85); }
+.tbl th {
+  background: rgb(248 250 252);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.dark .tbl th { background: rgb(30 41 59); }
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.dark .card { background: rgb(30 41 59); }
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}

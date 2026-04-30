@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1E40AF" />
+  <title>BizManager Lite</title>
+
+  <!-- Manifest so the user can install this from Chrome/Edge as an app -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231E40AF'/%3E%3Ctext x='50' y='66' font-family='Arial' font-size='52' font-weight='bold' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind via CDN — no build step needed -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E40AF',
+            primaryHover: '#1D4ED8',
+            primaryLight: '#DBEAFE',
+            success: '#16a34a',
+            danger: '#dc2626',
+            warning: '#d97706'
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!--
+    Optional: load credentials from credentials/config.js.
+    If the file is missing the browser logs a 404 but the app still works
+    (the setup wizard appears instead). Loading this BEFORE app.js means
+    window.BIZMGR_CONFIG is ready when the modules read it.
+  -->
+  <script src="credentials/config.js" onerror="window.__BIZMGR_NO_CONFIG=true"></script>
+</head>
+<body class="bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen">
+
+  <!-- The whole app renders into this div. -->
+  <div id="app">
+    <div class="flex items-center justify-center h-screen text-slate-500">Loading…</div>
+  </div>
+
+  <!-- Single entry point. Loaded as a module so we can use import / export. -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
